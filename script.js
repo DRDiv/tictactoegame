@@ -25,13 +25,13 @@ function showAlert(message, icon) {
 }
 
 
-function select() {
+function select(inp) {
     return new Promise((resolve, reject) => {
         const alertBox = document.createElement('div');
         alertBox.className = 'alert';
         alertBox.innerHTML = `
         <div class="alert-content">
-        <h2>PLEASE SELECT AVATAR:</h2>
+        <h2>PLEASE SELECT AVATAR FOR ${inp}:</h2>
           <div class="icon-container">
 
             <img src="bear.png" alt="bear" onclick="selectImage(this.src)">
@@ -335,7 +335,7 @@ function handleClick(cell, icon1, icon2) {
 
 function computer() {
     var icon1
-    select().then((icon1t) => {
+    select("PLAYER").then((icon1t) => {
         icon1 = icon1t
         icon2 = "computer.png"
         if (mode) return;
@@ -373,9 +373,9 @@ function computer() {
 }
 function player2() {
     var icon1, icon2;
-    select().then((icon1t) => {
+    select("PLAYER 1").then((icon1t) => {
         icon1 = icon1t
-        return select();
+        return select("PLAYER 2");
     }).then((icon2t) => {
         icon2 = icon2t
 
